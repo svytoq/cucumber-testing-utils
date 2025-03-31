@@ -1,10 +1,10 @@
 package ru.itmo.integration.http.steps;
 
-import static main.java.ru.itmo.platform.utils.mapping.MappingUtils.cast;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
+import static ru.itmo.platform.utils.mapping.MappingUtils.cast;
 
 
 import com.fasterxml.jackson.databind.JsonNode;

@@ -10,11 +10,12 @@ import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import main.java.ru.itmo.platform.utils.annotations.ConditionalOnWebUserInfoResolver;
+
 
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
+import ru.itmo.platform.utils.annotations.ConditionalOnWebUserInfoResolver;
 
 
 @Slf4j

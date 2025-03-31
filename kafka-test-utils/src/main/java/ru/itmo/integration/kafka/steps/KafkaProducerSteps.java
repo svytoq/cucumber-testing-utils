@@ -15,13 +15,14 @@ import org.apache.kafka.common.header.internals.RecordHeaders;
 import org.springframework.core.io.ClassPathResource;
 import ru.itmo.integration.kafka.mappers.HeadersValueMapper;
 import ru.itmo.integration.kafka.producers.TestKafkaProducer;
+import ru.itmo.platform.utils.mapping.ObjectMapperHelper;
 
 
 @RequiredArgsConstructor
 public class KafkaProducerSteps {
 
   private final TestKafkaProducer producer;
-  private final main.java.ru.itmo.platform.utils.mapping.ObjectMapperHelper objectMapperHelper;
+  private final ObjectMapperHelper objectMapperHelper;
   private final HeadersValueMapper headersValueMapper;
 
   @When("External service sends message to kafka topic {string}")

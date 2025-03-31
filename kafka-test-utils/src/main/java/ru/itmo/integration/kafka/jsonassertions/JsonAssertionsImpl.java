@@ -10,18 +10,19 @@ import java.util.Map.Entry;
 import java.util.Set;
 import lombok.SneakyThrows;
 import ru.itmo.integration.kafka.model.KafkaMessage;
+import ru.itmo.platform.utils.mapping.ObjectMapperHelper;
 
 
 public abstract class JsonAssertionsImpl implements JsonAssertions {
 
-  protected final main.java.ru.itmo.platform.utils.mapping.ObjectMapperHelper objectMapperHelper;
+  protected final ObjectMapperHelper objectMapperHelper;
   private final Set<String> incomparableParams;
 
-  protected JsonAssertionsImpl(main.java.ru.itmo.platform.utils.mapping.ObjectMapperHelper objectMapperHelper) {
+  protected JsonAssertionsImpl(ObjectMapperHelper objectMapperHelper) {
     this(objectMapperHelper, Set.of());
   }
 
-  protected JsonAssertionsImpl(main.java.ru.itmo.platform.utils.mapping.ObjectMapperHelper objectMapperHelper, Set<String> incomparableParams) {
+  protected JsonAssertionsImpl(ObjectMapperHelper objectMapperHelper, Set<String> incomparableParams) {
     this.objectMapperHelper = objectMapperHelper;
     this.incomparableParams = incomparableParams;
   }

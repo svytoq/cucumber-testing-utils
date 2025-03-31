@@ -7,6 +7,7 @@ import ru.itmo.integration.kafka.configuration.TestKafkaListenerInitializer;
 import ru.itmo.integration.kafka.jsonassertions.JsonAssertions;
 import ru.itmo.integration.kafka.jsonassertions.JsonAssertionsImpl;
 import ru.itmo.integration.kafka.listeners.TestKafkaListener;
+import ru.itmo.platform.utils.mapping.ObjectMapperHelper;
 
 
 public class KafkaFacadeFactoryBean implements FactoryBean<KafkaFacade> {
@@ -17,7 +18,7 @@ public class KafkaFacadeFactoryBean implements FactoryBean<KafkaFacade> {
   @Autowired
   private TestKafkaListenerInitializer listenerInitializer;
   @Autowired
-  private main.java.ru.itmo.platform.utils.mapping.ObjectMapperHelper objectMapperHelper;
+  private ObjectMapperHelper objectMapperHelper;
 
   public KafkaFacadeFactoryBean(String topic) {
     this(topic, Set.of());

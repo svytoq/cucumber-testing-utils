@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Component;
+import ru.itmo.platform.utils.mapping.ObjectMapperHelper;
 
 
 @Component
@@ -13,7 +14,7 @@ public class HeadersValueMapper {
   private static final String HEADERS_NODE = "/headers";
   private static final String VALUE_NODE   = "/value";
 
-  private final main.java.ru.itmo.platform.utils.mapping.ObjectMapperHelper objectMapperHelper;
+  private final ObjectMapperHelper objectMapperHelper;
 
   public Pair<String, String> toHeadersValueWrapper(String headersWithValue) {
     JsonNode rootNode = objectMapperHelper.readTree(headersWithValue);
