@@ -1,0 +1,3 @@
+ru\itmo\integration\s3\configuration\MinioInitializer.class
+ru\itmo\integration\s3\configuration\TestS3Configuration.class
+ru\itmo\integration\s3\steps\S3Steps.class

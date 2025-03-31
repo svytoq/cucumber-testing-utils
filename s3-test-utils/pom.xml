@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>ru.itmo</groupId>
+    <artifactId>cucumber-testing-utils</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>s3-test-utils</artifactId>
+  <name>s3-test-utils</name>
+  <description>Тестовые утилиты для работы с s3</description>
+
+  <properties>
+    <s3.version>2.30.27</s3.version>
+    <containers.version>1.20.4</containers.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+      <version>${s3.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>minio</artifactId>
+      <version>${containers.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <inherited>false</inherited>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
