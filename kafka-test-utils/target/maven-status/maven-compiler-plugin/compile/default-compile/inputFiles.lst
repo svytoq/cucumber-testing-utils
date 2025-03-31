@@ -1,0 +1,13 @@
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\jsonassertions\JsonAssertions.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\configuration\TestKafkaConfiguration.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\mappers\HeadersValueMapper.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\producers\TestKafkaProducer.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\facades\KafkaFacadeRegistry.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\configuration\TestKafkaListenerInitializer.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\model\KafkaMessage.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\facades\KafkaFacade.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\listeners\TestKafkaListener.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\facades\KafkaFacadeFactoryBean.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\jsonassertions\JsonAssertionsImpl.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\steps\KafkaProducerSteps.java
+C:\Users\svytoq1\Desktop\Diplom\cucumber-testing-utils\kafka-test-utils\src\main\java\ru\itmo\integration\kafka\steps\KafkaListenerSteps.java
