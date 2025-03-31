@@ -1,0 +1,3 @@
+ru\itmo\integration\jpa\configuration\TestJpaConfiguration.class
+ru\itmo\integration\jpa\steps\JdbcSteps.class
+ru\itmo\integration\jpa\repositories\TestRepository.class
