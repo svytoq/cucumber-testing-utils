@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@Profile("ips-dev")
+@Profile("dev")
 @PropertySource("classpath:environment.properties")
 public class LocalConfiguration {
 
