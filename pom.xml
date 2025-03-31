@@ -29,8 +29,6 @@
         <cucumber.version>7.13.0</cucumber.version>
         <revision>local-SNAPSHOT</revision>
         <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -78,7 +76,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>17</source>
+                        <target>17</target>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
