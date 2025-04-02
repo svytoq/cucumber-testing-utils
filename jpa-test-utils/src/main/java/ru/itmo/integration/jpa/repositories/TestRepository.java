@@ -37,7 +37,8 @@ public class TestRepository {
 
     for (List<String> row : data) {
       try {
-        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE id = CAST(? AS BIGINT)";
+        String query = "SELECT COUNT(*) FROM " + tableName +
+                " WHERE id = (CAST(:id AS TEXT)::BIGINT)";
         int count = jdbc.queryForObject(
                 query,
                 Integer.class,
