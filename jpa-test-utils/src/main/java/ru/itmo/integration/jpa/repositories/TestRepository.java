@@ -36,13 +36,15 @@ public class TestRepository {
     }
 
     for (List<String> row : data) {
-      if (row == null || row.isEmpty()) continue;
-
-      String id = row.get(0);
-      String query = String.format("SELECT COUNT(*) FROM %s WHERE id = ?", tableName);
-
-      int count = jdbc.queryForObject(query, Integer.class, id);
-      if (count == 0) {
+      try {
+        long id = Long.parseLong(row.get(0));
+        int count = jdbc.queryForObject(
+                "SELECT COUNT(*) FROM " + tableName + " WHERE id = ?",
+                Integer.class,
+                id
+        );
+        if (count == 0) return false;
+      } catch (NumberFormatException e) {
         return false;
       }
     }
