@@ -2,6 +2,7 @@ package ru.itmo.integration.jpa.repositories;
 
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
@@ -28,44 +29,41 @@ public class TestRepository {
   }
 
   public boolean checkDictionaryTableRows(String tableName, List<List<String>> data) {
-    if (tableName == null || tableName.isBlank() || data == null || data.isEmpty()) {
+    if (data.isEmpty()) {
       return false;
     }
 
-    if (!tableExists(tableName)) {
-      return false;
-    }
+    List<String> columnNames = data.get(0);
 
-    String idType = jdbc.queryForObject(
-            "SELECT data_type FROM information_schema.columns " +
-                    "WHERE table_name = LOWER(?) AND column_name = 'id'",
-            String.class,
-            tableName
-    );
+    for (int i = 1; i < data.size(); i++) {
+      List<String> row = data.get(i);
 
-    if (!"bigint".equalsIgnoreCase(idType)) {
-      throw new IllegalStateException("Тип поля id должен быть bigint");
-    }
+      long id = Long.parseLong(row.get(0));  // Предположим, что id находится в первой колонке
+      String sql = "SELECT * FROM " + tableName + " WHERE id = ?";
 
-    for (List<String> row : data) {
-      if (row == null || row.isEmpty()) continue;
+      List<Map<String, Object>> dbRow = jdbc.queryForList(sql, id);
 
-      try {
-        String query = "SELECT EXISTS(SELECT 1 FROM " + tableName +
-                " WHERE id = (SELECT (?::text)::bigint LIMIT 1)";
-
-
-        Boolean exists = jdbc.queryForObject(
-                query,
-                Boolean.class,
-                row.get(0)
-        );
-
-        if (exists == null || !exists) {
-          return false;
-        }
-      } catch (DataAccessException e) {
+      if (dbRow.isEmpty()) {
         return false;
+      }
+
+      Map<String, Object> dbRowData = dbRow.get(0);
+
+      for (int j = 0; j < columnNames.size(); j++) {
+        String columnName = columnNames.get(j);
+        String inputValue = row.get(j);  // Значение из данных
+
+        Object dbValue = dbRowData.get(columnName);
+
+        if (dbValue == null) {
+          if (inputValue != null) {
+            return false;
+          }
+        } else {
+          if (!dbValue.toString().equals(inputValue)) {
+            return false;
+          }
+        }
       }
     }
 

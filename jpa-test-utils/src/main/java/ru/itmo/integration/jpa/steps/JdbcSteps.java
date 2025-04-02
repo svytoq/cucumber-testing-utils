@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import lombok.RequiredArgsConstructor;
 import ru.itmo.integration.jpa.repositories.TestRepository;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 @RequiredArgsConstructor
 public class JdbcSteps {
@@ -32,7 +34,7 @@ public class JdbcSteps {
     @Then("Db table {string} has data:")
     public void dbTableHasData(String tableName, DataTable dataTable) {
         List<List<String>> lists = dataTable.asLists();
-        repository.checkDictionaryTableRows(tableName, lists);
+        assertTrue(repository.checkDictionaryTableRows(tableName, lists));
     }
 
     @And("Db sequence {string} reset to {int}")
