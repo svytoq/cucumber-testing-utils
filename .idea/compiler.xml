@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="platform-commons" />
+        <module name="http-test-utils" />
+        <module name="jpa-test-utils" />
+        <module name="s3-test-utils" />
+        <module name="kafka-test-utils" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="http-test-utils" options="-parameters" />
+      <module name="jpa-test-utils" options="-parameters" />
+      <module name="kafka-test-utils" options="-parameters" />
+      <module name="platform-commons" options="-parameters" />
+      <module name="s3-test-utils" options="-parameters" />
+    </option>
+  </component>
+</project>
