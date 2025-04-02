@@ -26,6 +26,29 @@ public class TestRepository {
     }
   }
 
+  public boolean checkDictionaryTableRows(String tableName, List<List<String>> data) {
+    if (tableName == null || tableName.isBlank() || data == null || data.isEmpty()) {
+      return false;
+    }
+
+    if (!tableExists(tableName)) {
+      return false;
+    }
+
+    for (List<String> row : data) {
+      if (row == null || row.isEmpty()) continue;
+
+      String id = row.get(0);
+      String query = String.format("SELECT COUNT(*) FROM %s WHERE id = ?", tableName);
+
+      int count = jdbc.queryForObject(query, Integer.class, id);
+      if (count == 0) {
+        return false;
+      }
+    }
+
+    return true;
+  }
   @Transactional
   public void execute(String sql) {
     jdbc.execute(sql);
@@ -42,4 +65,9 @@ public class TestRepository {
         .collect(Collectors.joining(", ", "(", ")"));
   }
 
+  private boolean tableExists(String tableName) {
+    String query = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = ?";
+    Integer count = jdbc.queryForObject(query, Integer.class, tableName.toLowerCase());
+    return count != null && count > 0;
+  }
 }
