@@ -29,7 +29,7 @@ public class JdbcSteps {
         repository.insertDictionaryTableRows(tableName, lists);
     }
 
-    @Then("Db table {string} contains data:")
+    @Then("Db table {string} has data:")
     public void dbTableHasData(String tableName, DataTable dataTable) {
         List<List<String>> lists = dataTable.asLists();
         repository.checkDictionaryTableRows(tableName, lists);
