@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -35,17 +36,35 @@ public class TestRepository {
       return false;
     }
 
+    String idType = jdbc.queryForObject(
+            "SELECT data_type FROM information_schema.columns " +
+                    "WHERE table_name = LOWER(?) AND column_name = 'id'",
+            String.class,
+            tableName
+    );
+
+    if (!"bigint".equalsIgnoreCase(idType)) {
+      throw new IllegalStateException("Тип поля id должен быть bigint");
+    }
+
     for (List<String> row : data) {
+      if (row == null || row.isEmpty()) continue;
+
       try {
-        String query = "SELECT COUNT(*) FROM " + tableName +
-                " WHERE id = (CAST(:id AS TEXT)::BIGINT)";
-        int count = jdbc.queryForObject(
+        String query = "SELECT EXISTS(SELECT 1 FROM " + tableName +
+                " WHERE id = (SELECT (?::text)::bigint LIMIT 1)";
+
+
+        Boolean exists = jdbc.queryForObject(
                 query,
-                Integer.class,
-                row.get(0)  // Передаем как строку, CAST преобразует в BIGINT
+                Boolean.class,
+                row.get(0)
         );
-        if (count == 0) return false;
-      } catch (NumberFormatException e) {
+
+        if (exists == null || !exists) {
+          return false;
+        }
+      } catch (DataAccessException e) {
         return false;
       }
     }
