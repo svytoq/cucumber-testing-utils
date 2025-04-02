@@ -37,11 +37,11 @@ public class TestRepository {
 
     for (List<String> row : data) {
       try {
-        long id = Long.parseLong(row.get(0));
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE id = CAST(? AS BIGINT)";
         int count = jdbc.queryForObject(
-                "SELECT COUNT(*) FROM " + tableName + " WHERE id = ?::bigint",
+                query,
                 Integer.class,
-                id
+                row.get(0)  // Передаем как строку, CAST преобразует в BIGINT
         );
         if (count == 0) return false;
       } catch (NumberFormatException e) {
