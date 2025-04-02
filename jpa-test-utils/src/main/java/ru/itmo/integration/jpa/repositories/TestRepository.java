@@ -39,7 +39,7 @@ public class TestRepository {
       try {
         long id = Long.parseLong(row.get(0));
         int count = jdbc.queryForObject(
-                "SELECT COUNT(*) FROM " + tableName + " WHERE id = ?",
+                "SELECT COUNT(*) FROM " + tableName + " WHERE id = ?::bigint",
                 Integer.class,
                 id
         );
