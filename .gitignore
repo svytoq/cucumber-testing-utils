@@ -3,6 +3,12 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+/http-test-utils/target/
+/jpa-test-utils/target/
+/kafka-test-utils/target/
+/platform-commons/target/
+/s3-test-utils/target/
+
 ### Eclipse ###
 .apt_generated
 .classpath
