@@ -38,7 +38,7 @@ public class TestRepository {
     for (int i = 1; i < data.size(); i++) {
       List<String> row = data.get(i);
 
-      long id = Long.parseLong(row.get(0));  // Предположим, что id находится в первой колонке
+      long id = Long.parseLong(row.get(0));
       String sql = "SELECT * FROM " + tableName + " WHERE id = ?";
 
       List<Map<String, Object>> dbRow = jdbc.queryForList(sql, id);
@@ -51,7 +51,7 @@ public class TestRepository {
 
       for (int j = 0; j < columnNames.size(); j++) {
         String columnName = columnNames.get(j);
-        String inputValue = row.get(j);  // Значение из данных
+        String inputValue = row.get(j);
 
         Object dbValue = dbRowData.get(columnName);
 
