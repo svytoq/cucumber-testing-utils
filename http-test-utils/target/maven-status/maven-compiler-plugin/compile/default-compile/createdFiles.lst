@@ -1,4 +1,0 @@
-ru\itmo\integration\http\steps\HttpSteps.class
-ru\itmo\integration\http\configuration\TestHttpConfiguration.class
-ru\itmo\integration\http\datatables\DataTableBuilder.class
-ru\itmo\integration\http\handler\HeaderHandler.class
